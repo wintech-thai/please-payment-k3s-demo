@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: minio
+  name: loki-log
 spec:
   generators:
   - clusters:
@@ -10,16 +10,21 @@ spec:
           custom: "true"
   template:
     metadata:
-      name: 'minio-{{name}}'
+      name: 'loki-log-{{name}}'
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/wintech-thai/please-payment-k3s-demo.git
+        repoURL: https://github.com/wintech-thai/please-payment-k3s-pjp.git
         targetRevision: "{{name}}" #Based on environment
-        path: '99-deployments/manifests/minio'
+        path: '99-deployments/manifests/loki-log'
+        helm:
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - values.yaml
+            - values-{{name}}.yaml
       destination:
         name: in-cluster
-        namespace: minio
+        namespace: loki-log
       syncPolicy:
         automated:
           selfHeal: false

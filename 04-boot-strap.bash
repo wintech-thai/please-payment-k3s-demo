@@ -8,7 +8,7 @@ kubectl apply -f argocd-ing.yaml
 
 #if [ "$MODE" = "dev" ]; then
   # ให้ปรับ repoURL ให้ชี้ตรงไปที่ remote GIT ด้วย เพื่อให้ ArgoCD ไป sync มาจากตรงนั้นแทน
-  DATA_PLANE_REMOTE_REPO=https://github.com/wintech-thai/please-payment-k3s-demo.git
+  DATA_PLANE_REMOTE_REPO=https://github.com/wintech-thai/please-payment-k3s-pjp.git
   CTRL_PLANE_REMOTE_REPO=https://github.com/wintech-thai/please-payment-control-plane.git
 
   sed -i "s|^\([[:space:]]*\)repoURL: .*|\1repoURL: ${DATA_PLANE_REMOTE_REPO}|g" argocd-bootstrap-data-plane.yaml
