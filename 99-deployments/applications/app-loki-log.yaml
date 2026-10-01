@@ -14,7 +14,7 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/wintech-thai/please-payment-k3s-pjp.git
+        repoURL: https://github.com/wintech-thai/please-payment-k3s-demo.git
         targetRevision: "{{name}}" #Based on environment
         path: '99-deployments/manifests/loki-log'
         helm:
